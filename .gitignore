@@ -1,5 +1,6 @@
 /.idea/
-/hm-dianping/
+/hm-dianping/src/main/resources/application.yml
+/hm-dianping/target
 /hmdp-client/Redis实战篇.md
 /hmdp-client/Redis实战篇.assets/
 /hmdp-client/02-Redis企业实战.pptx
