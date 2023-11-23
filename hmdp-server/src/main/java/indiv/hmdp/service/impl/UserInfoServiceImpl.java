@@ -1,10 +1,10 @@
 package indiv.hmdp.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+
 import indiv.hmdp.entity.po.UserInfoPO;
 import indiv.hmdp.mapper.UserInfoMapper;
-import indiv.hmdp.mapper.UserMapper;
-import indiv.hmdp.service.api.UserInfoService;
-import org.springframework.beans.factory.annotation.Autowired;
+import indiv.hmdp.service.api.IUserInfoService;
 import org.springframework.stereotype.Service;
 
 /**
@@ -16,13 +16,6 @@ import org.springframework.stereotype.Service;
  * @since 2021-12-24
  */
 @Service
-public class UserInfoServiceImpl  implements UserInfoService {
-    @Autowired
-    UserMapper userMapper;
-    @Autowired
-    UserInfoMapper userInfoMapper;
-    @Override
-    public UserInfoPO getById(Long userId) {
-        return userInfoMapper.selectById(userId);
-    }
+public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfoPO> implements IUserInfoService {
+
 }

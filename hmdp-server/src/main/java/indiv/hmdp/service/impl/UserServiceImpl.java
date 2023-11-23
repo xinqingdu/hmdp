@@ -6,7 +6,6 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import indiv.hmdp.entity.po.UserPO;
 import indiv.hmdp.mapper.UserMapper;
 import indiv.hmdp.service.api.UserService;
-import indiv.hmdp.utils.SQLUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +31,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public UserPO getUserByPhone(String phone) {
+        return userMapper.selectOne(queryWrapper.eq("phone",phone));
+    }
+
+    @Override
     public UserPO createUserWithEmail(String email) {
         UserPO userPO = new UserPO();
         userPO.setEmail(email);
@@ -40,5 +44,21 @@ public class UserServiceImpl implements UserService {
         userPO.setPassword(pass);
         userMapper.insert(userPO);
         return userPO;
+    }
+
+    @Override
+    public UserPO createUserWithPhone(String phone) {
+        UserPO userPO = new UserPO();
+        userPO.setPhone(phone);
+        String password = UUID.randomUUID().toString();
+        String pass = new Digester(DigestAlgorithm.MD5).digestHex(password);
+        userPO.setPassword(pass);
+        userMapper.insert(userPO);
+        return userPO;
+    }
+
+    @Override
+    public UserPO getById(Long userId) {
+        return userMapper.selectById(userId);
     }
 }

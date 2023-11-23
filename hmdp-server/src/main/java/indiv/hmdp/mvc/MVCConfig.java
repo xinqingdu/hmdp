@@ -1,4 +1,4 @@
-package mvc;
+package indiv.hmdp.mvc;
 
 import indiv.hmdp.interceptor.LoginInterceptor;
 import indiv.hmdp.interceptor.RefreshTokenInterceptor;

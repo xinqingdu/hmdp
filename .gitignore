@@ -7,3 +7,5 @@
 /hmdp-server/src/main/resources/application.yml
 /hmdp-server/target/
 /nginx-1.18.0/logs/
+/hmdp-server/hmdp-server.iml
+/hm-dianping/hm-dianping.iml
