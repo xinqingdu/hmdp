@@ -231,7 +231,7 @@ public class ConcurrentHashMap<K, V> implements Map<K, V> {
 
     AtomicInteger size;
 
-    static int defaultSize = 8;
+    static int defaultSize = 16;
 
     public ConcurrentHashMap() {
         this.map = new NodeLock[defaultSize];
@@ -241,7 +241,6 @@ public class ConcurrentHashMap<K, V> implements Map<K, V> {
             map[i] = new NodeLock();
         }
     }
-
 
     public int hash(Object k) {
         return k.hashCode() & (map.length - 1);
@@ -323,7 +322,7 @@ class Test {
             e.fillInStackTrace();
         }
         for (int i = 0; i < 1000; i++) {
-            System.out.print(myMap.remove(String.valueOf(i))+" ");
+            System.out.print(myMap.remove(String.valueOf(i)) + " ");
         }
         System.out.println();
         NodeLock[] map1 = myMap.getMap();
